@@ -22,6 +22,7 @@ ggplot(cc,aes(x=contacts))+geom_histogram(aes(y=..density..))+geom_density()
 
 ########
 # cc1 is subset of cc with only Account_id and contacts column
+library(dplyr)
 cc1<- select(cc, c(1,7))
 head(cc1)
 str(cc1)  # 320995 obs. of 2 variables 
@@ -31,7 +32,7 @@ cc1<- cc1[!duplicated(cc1),]
 head(cc1)
 str(cc1)  # 115864 obs. of  2 variables
 # Assumption NA in contacts column = 0 
-cc1[is.na(cc1$contacts)]<- 0
+cc1[is.na(cc1)]<- 0
 head(cc1)
 table(cc4$contacts)    # checking distribution of contacts
 boxplot(cc$contacts)
